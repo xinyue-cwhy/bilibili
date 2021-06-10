@@ -1,0 +1,43 @@
+<view class="box">
+  <!-- 头部 -->
+  <myHeader></myHeader>
+  <!-- 导航 -->
+  <view class="nav_item">
+    <scroll-view class="navitems" scroll-x>
+      <view bindtap="activeNav" data-index="{{index}}" class="nav {{index==currentIndex ?'active':' '}}" wx:for="{{navList}}" wx:key="index">
+        {{item.text}}
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 轮播图 -->
+  <view class="swiperItems">
+    <swiper class="swiper" autoplay indicator-dots="{{true}}" circular="{{true}}">
+      <swiper-item class="item" wx:for="{{swiperList}}" wx:key="index">
+        <navigator>
+          <image class="" src="{{item.imgSrc}}" mode="widthFix"></image>
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 视频容器 -->
+  <view class="video">
+    <!-- 图片容器 -->
+    <navigator class="videobox" wx:for="{{videoList}}" wx:key="index" url="../detail/detail?id={{item.id}}">
+      <view class="videoimg">
+        <!-- 图片 -->
+        <image class="videoimgitem" src="{{item.imgSrc}}" mode="widthFix"></image>
+        <!-- 播放量 -->
+        <view class="bofangl">
+          <view class="play_count">
+            <text class="plycount">播放量：{{item.playCount}}</text>
+          </view>
+          <view class="comment_count">
+            <text>弹幕：{{item.commentCount}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 评论 -->
+      <view class="acount">{{item.desc}}</view>
+    </navigator>
+  </view>
+</view>
